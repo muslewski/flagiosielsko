@@ -42,11 +42,11 @@ export default function Example10() {
 
       {/* Industrial top bar */}
       <div
-        className="relative z-10 border-b font-mono text-[10px] uppercase tracking-[0.25em]"
+        className="relative z-10 border-b font-mono text-[9px] uppercase tracking-[0.2em] sm:text-[10px] sm:tracking-[0.25em]"
         style={{ borderColor: STEEL_LINE, color: STEEL_MUTED, background: STEEL_SOFT }}
       >
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-2">
-          <div className="flex items-center gap-6">
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-2 px-4 py-2 sm:px-6">
+          <div className="flex items-center gap-3 sm:gap-6">
             <span className="flex items-center gap-2" style={{ color: YELLOW }}>
               <Pulse className="h-1.5 w-1.5 rounded-full" scale={[1, 1.7, 1]}>
                 <span
@@ -54,13 +54,14 @@ export default function Example10() {
                   style={{ background: YELLOW, boxShadow: `0 0 6px ${YELLOW}` }}
                 />
               </Pulse>
-              pracownia czynna
+              <span className="hidden sm:inline">pracownia czynna</span>
+              <span className="sm:hidden">czynne</span>
             </span>
-            <span className="hidden sm:inline">NIP PL 5541105954 / EST. 1984</span>
+            <span className="hidden md:inline">NIP PL 5541105954 / EST. 1984</span>
             <span className="hidden lg:inline">Jakość ISO · test 60 km/h</span>
           </div>
-          <div className="flex items-center gap-4">
-            <span>{company.hours.weekdays}</span>
+          <div className="flex items-center gap-3 sm:gap-4">
+            <span className="hidden sm:inline">{company.hours.weekdays}</span>
             <a href={company.phoneHref} style={{ color: FG }}>
               {company.phone}
             </a>
@@ -76,10 +77,10 @@ export default function Example10() {
           background: "rgba(24,24,27,0.85)",
         }}
       >
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5">
-          <Link href="/" className="flex items-center gap-4">
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-3 px-4 py-4 sm:px-6 sm:py-5">
+          <Link href="/" className="flex items-center gap-3 sm:gap-4">
             <div
-              className="grid h-10 w-10 place-items-center font-mono text-sm font-bold"
+              className="grid h-9 w-9 flex-shrink-0 place-items-center font-mono text-sm font-bold sm:h-10 sm:w-10"
               style={{
                 background: YELLOW,
                 color: STEEL,
@@ -89,16 +90,16 @@ export default function Example10() {
             >
               J-A
             </div>
-            <div>
-              <div className="text-base font-bold tracking-tight">
+            <div className="min-w-0">
+              <div className="truncate text-sm font-bold tracking-tight sm:text-base">
                 Manufaktura J-ART
               </div>
-              <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+              <div className="hidden font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500 sm:block">
                 Flagi · Banery · Maszty / Osielsko, PL
               </div>
             </div>
           </Link>
-          <nav className="hidden gap-1 md:flex">
+          <nav className="hidden gap-1 lg:flex">
             {[
               { l: "Produkty", n: "01" },
               { l: "Specyfikacje", n: "02" },
@@ -120,10 +121,11 @@ export default function Example10() {
           </nav>
           <a
             href={`mailto:${company.primaryEmail}?subject=Zapytanie%20ofertowe`}
-            className="border px-5 py-2.5 font-mono text-xs uppercase tracking-[0.2em] transition-colors"
+            className="flex-shrink-0 border px-3 py-2 font-mono text-[10px] uppercase tracking-[0.15em] transition-colors sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-[0.2em]"
             style={{ borderColor: YELLOW, color: YELLOW }}
           >
-            → Złóż zapytanie
+            <span className="sm:hidden">→ RFQ</span>
+            <span className="hidden sm:inline">→ Złóż zapytanie</span>
           </a>
         </div>
       </header>
@@ -133,10 +135,10 @@ export default function Example10() {
         className="relative z-10 border-b"
         style={{ borderColor: STEEL_LINE }}
       >
-        <div className="mx-auto grid max-w-[1600px] grid-cols-12 gap-0 px-6 py-20 lg:py-32">
+        <div className="mx-auto grid max-w-[1600px] grid-cols-12 gap-0 px-4 py-12 sm:px-6 sm:py-20 lg:py-32">
           <div className="col-span-12 lg:col-span-7">
             <div
-              className="inline-flex items-center gap-2 border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em]"
+              className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 border px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em] sm:text-[10px] sm:tracking-[0.25em]"
               style={{ borderColor: STEEL_LINE, color: YELLOW }}
             >
               <span>SERIA 26·Q2</span>
@@ -313,7 +315,7 @@ export default function Example10() {
         className="relative z-10 border-b"
         style={{ borderColor: STEEL_LINE }}
       >
-        <div className="mx-auto max-w-[1600px] px-6 py-20">
+        <div className="mx-auto max-w-[1600px] px-4 py-14 sm:px-6 sm:py-20">
           <SectionHeader
             num="01"
             label="Katalog produktów"
@@ -380,7 +382,7 @@ export default function Example10() {
         className="relative z-10 border-b"
         style={{ borderColor: STEEL_LINE, background: STEEL_SOFT }}
       >
-        <div className="mx-auto max-w-[1600px] px-6 py-20">
+        <div className="mx-auto max-w-[1600px] px-4 py-14 sm:px-6 sm:py-20">
           <SectionHeader
             num="02"
             label="Specyfikacja techniczna"
@@ -445,7 +447,7 @@ export default function Example10() {
         className="relative z-10 border-b"
         style={{ borderColor: STEEL_LINE }}
       >
-        <div className="mx-auto max-w-[1600px] px-6 py-20">
+        <div className="mx-auto max-w-[1600px] px-4 py-14 sm:px-6 sm:py-20">
           <SectionHeader
             num="03"
             label="Proces produkcyjny"
@@ -489,7 +491,7 @@ export default function Example10() {
         className="relative z-10 border-b"
         style={{ borderColor: STEEL_LINE, background: STEEL_SOFT }}
       >
-        <div className="mx-auto max-w-[1600px] px-6 py-20">
+        <div className="mx-auto max-w-[1600px] px-4 py-14 sm:px-6 sm:py-20">
           <SectionHeader
             num="04"
             label="Realizacje · ostatnie 12 miesięcy"
@@ -529,7 +531,7 @@ export default function Example10() {
         className="relative z-10 border-b"
         style={{ borderColor: STEEL_LINE }}
       >
-        <div className="mx-auto max-w-[1600px] px-6 py-20">
+        <div className="mx-auto max-w-[1600px] px-4 py-14 sm:px-6 sm:py-20">
           <SectionHeader
             num="05"
             label="Cennik produktów standardowych"
@@ -571,7 +573,7 @@ export default function Example10() {
         className="relative z-10 border-b"
         style={{ borderColor: STEEL_LINE, background: STEEL_SOFT }}
       >
-        <div className="mx-auto max-w-[1600px] px-6 py-16">
+        <div className="mx-auto max-w-[1600px] px-4 py-12 sm:px-6 sm:py-16">
           <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500">
             // Klienci · sektor B2B i instytucjonalny
           </div>
@@ -597,7 +599,7 @@ export default function Example10() {
         className="relative z-10 border-b"
         style={{ borderColor: STEEL_LINE }}
       >
-        <div className="mx-auto max-w-[1600px] px-6 py-20">
+        <div className="mx-auto max-w-[1600px] px-4 py-14 sm:px-6 sm:py-20">
           <SectionHeader
             num="06"
             label="FAQ · Dokumentacja"
@@ -670,7 +672,7 @@ export default function Example10() {
         className="relative z-10 border-b"
         style={{ borderColor: STEEL_LINE }}
       >
-        <div className="mx-auto grid max-w-[1600px] grid-cols-12 gap-0 px-6 py-24">
+        <div className="mx-auto grid max-w-[1600px] grid-cols-12 gap-0 px-4 py-16 sm:px-6 sm:py-24">
           <div className="col-span-12 lg:col-span-7">
             <div
               className="font-mono text-[10px] uppercase tracking-[0.3em]"
@@ -705,7 +707,7 @@ export default function Example10() {
               <div className="space-y-px" style={{ background: STEEL_LINE }}>
                 <a
                   href={company.phoneHref}
-                  className="flex items-center justify-between px-5 py-5 hover:bg-zinc-800/40"
+                  className="flex flex-col gap-1 px-5 py-4 hover:bg-zinc-800/40 sm:flex-row sm:items-center sm:justify-between sm:py-5"
                   style={{ background: STEEL_SOFT }}
                 >
                   <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
@@ -717,18 +719,18 @@ export default function Example10() {
                 </a>
                 <a
                   href={`mailto:${company.primaryEmail}?subject=Zapytanie%20ofertowe`}
-                  className="flex items-center justify-between px-5 py-5 hover:bg-zinc-800/40"
+                  className="flex flex-col gap-1 px-5 py-4 hover:bg-zinc-800/40 sm:flex-row sm:items-center sm:justify-between sm:py-5"
                   style={{ background: STEEL_SOFT }}
                 >
                   <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
                     Email · zapytanie
                   </span>
-                  <span className="font-mono text-base font-bold">
+                  <span className="break-all font-mono text-sm font-bold sm:text-base">
                     {company.primaryEmail}
                   </span>
                 </a>
                 <div
-                  className="flex items-center justify-between px-5 py-5"
+                  className="flex flex-col gap-1 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:py-5"
                   style={{ background: STEEL_SOFT }}
                 >
                   <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
@@ -753,7 +755,7 @@ export default function Example10() {
 
       {/* Footer */}
       <footer className="relative z-10">
-        <div className="mx-auto grid max-w-[1600px] grid-cols-2 gap-8 border-b px-6 py-12 md:grid-cols-4" style={{ borderColor: STEEL_LINE }}>
+        <div className="mx-auto grid max-w-[1600px] grid-cols-2 gap-6 border-b px-4 py-10 sm:gap-8 sm:px-6 sm:py-12 md:grid-cols-4" style={{ borderColor: STEEL_LINE }}>
           <div>
             <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
               Spółka
@@ -807,7 +809,7 @@ export default function Example10() {
             </div>
           </div>
         </div>
-        <div className="mx-auto flex max-w-[1600px] flex-col gap-2 px-6 py-4 font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500 sm:flex-row sm:justify-between">
+        <div className="mx-auto flex max-w-[1600px] flex-col gap-2 px-4 py-4 sm:px-6 font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500 sm:flex-row sm:justify-between">
           <div>
             © 1984—{new Date().getFullYear()} · wszystkie prawa zastrzeżone
           </div>
