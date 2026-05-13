@@ -68,10 +68,13 @@ export default function Example10() {
         </div>
       </div>
 
-      {/* Header */}
+      {/* Header — sticky, steel-tinted glass */}
       <header
-        className="relative z-10 border-b"
-        style={{ borderColor: STEEL_LINE }}
+        className="sticky top-0 z-40 border-b backdrop-blur-md"
+        style={{
+          borderColor: STEEL_LINE,
+          background: "rgba(24,24,27,0.85)",
+        }}
       >
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5">
           <Link href="/" className="flex items-center gap-4">

@@ -38,10 +38,13 @@ export default function Example1() {
       className="font-display"
     >
 
-      {/* Top bar */}
+      {/* Top bar — sticky, paper-tinted glass */}
       <header
-        className="border-b"
-        style={{ borderColor: "rgba(26,22,18,0.12)" }}
+        className="sticky top-0 z-50 border-b backdrop-blur-md"
+        style={{
+          borderColor: "rgba(26,22,18,0.12)",
+          background: "rgba(251,247,240,0.85)",
+        }}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
           <div className="flex items-baseline gap-3">

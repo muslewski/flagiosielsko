@@ -26,11 +26,10 @@ const RED = "#ef3b46";
 export default function Example4() {
   return (
     <MotionRoot>
-    <main className="relative min-h-screen overflow-hidden bg-[#08080a] font-sans text-neutral-100">
-      <AmbientGlow />
+    <main className="relative min-h-screen bg-[#08080a] font-sans text-neutral-100">
 
-      {/* Header */}
-      <header className="relative z-10 border-b border-white/5">
+      {/* Header — sticky, dark-glass blur */}
+      <header className="sticky top-0 z-50 border-b border-white/5 bg-[#08080a]/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
           <Link href="/" className="flex items-baseline gap-3">
             <span className="text-lg font-semibold tracking-tight">J-ART</span>
@@ -53,6 +52,11 @@ export default function Example4() {
           </a>
         </div>
       </header>
+
+      {/* Content wrapper — overflow-hidden contains AmbientGlow blobs.
+         Kept separate from <main> so the sticky header above isn't broken by overflow rules. */}
+      <div className="relative overflow-hidden">
+        <AmbientGlow />
 
       {/* Hero */}
       <section className="relative z-10 mx-auto max-w-7xl px-8 pt-24 pb-32">
@@ -458,6 +462,7 @@ export default function Example4() {
           </div>
         </div>
       </footer>
+      </div>
     </main>
     </MotionRoot>
   );
