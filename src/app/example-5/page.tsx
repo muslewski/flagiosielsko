@@ -225,8 +225,8 @@ export default function Example5() {
         </div>
       </Section>
 
-      {/* === SECTION: Products === scrolls naturally (taller than viewport) */}
-      <Section id="oferta" eyebrow="02 · Oferta" title="Osiem kategorii produktów" background="muted">
+      {/* === SECTION: Products === positioned (z=3) but not pinned (8 cards exceed viewport) */}
+      <Section z={3} sticky={false} id="oferta" eyebrow="02 · Oferta" title="Osiem kategorii produktów" background="muted">
         <Stagger
           stagger={0.06}
           className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
@@ -285,8 +285,10 @@ export default function Example5() {
         </Stagger>
       </Section>
 
-      {/* === SECTION: Realizations / Gallery === scrolls naturally (16 figures) */}
+      {/* === SECTION: Realizations / Gallery === positioned (z=5) but not pinned (16 figures) */}
       <Section
+        z={5}
+        sticky={false}
         eyebrow="04 · Realizacje"
         title="Marki, które nam zaufały"
         background="muted"
@@ -366,8 +368,8 @@ export default function Example5() {
         </Stagger>
       </Section>
 
-      {/* === SECTION: FAQ — bento cards === scrolls naturally (cards expand) */}
-      <Section eyebrow="06 · FAQ" title="Najczęściej zadawane pytania" background="white">
+      {/* === SECTION: FAQ — bento cards === positioned (z=7) but not pinned (cards expand) */}
+      <Section z={7} sticky={false} eyebrow="06 · FAQ" title="Najczęściej zadawane pytania" background="white">
         <Stagger
           stagger={0.05}
           className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3"
@@ -442,8 +444,8 @@ export default function Example5() {
         </Reveal>
       </section>
 
-      {/* Footer */}
-      <footer className="px-6 py-12" style={{ background: "#0a0a0a", color: "#a1a1aa" }}>
+      {/* Footer — positioned above CTA z=8 (which stays pinned until main's bottom) */}
+      <footer className="relative z-[9] px-6 py-12" style={{ background: "#0a0a0a", color: "#a1a1aa" }}>
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 md:grid-cols-4">
           <div>
             <div className="text-base font-bold text-white">J-ART</div>
@@ -496,6 +498,7 @@ function Section({
   kicker,
   background,
   z,
+  sticky = true,
   children,
 }: {
   id?: string;
@@ -503,16 +506,22 @@ function Section({
   title: string;
   kicker?: string;
   background: "white" | "muted";
-  /** When provided, the section becomes part of the sticky-stack at this z-index. */
+  /** When provided, the section joins the stacking ladder at this z-index.
+   *  Combined with `sticky` (default true) it also pins at top:0. Use
+   *  `sticky={false}` for sections taller than the viewport — they stay
+   *  in the ladder but scroll naturally so their bottom content is visible. */
   z?: number;
+  sticky?: boolean;
   children: React.ReactNode;
 }) {
+  const positioned = z !== undefined;
+  const pinned = positioned && sticky;
   return (
     <section
       id={id}
       className={
-        z !== undefined
-          ? "sticky top-0 border-t border-neutral-200 px-6 py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]"
+        positioned
+          ? `${pinned ? "sticky top-0" : "relative"} border-t border-neutral-200 px-6 py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]`
           : "px-6 py-24"
       }
       style={{

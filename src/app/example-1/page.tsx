@@ -631,10 +631,10 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer — positioned above CTA z=8 (which stays pinned until main's bottom) */}
       <footer
-        className="border-t py-12"
-        style={{ borderColor: "rgba(26,22,18,0.12)" }}
+        className="relative z-[9] border-t py-12"
+        style={{ borderColor: "rgba(26,22,18,0.12)", background: PALETTE.paper }}
       >
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-8 font-sans text-sm text-neutral-600 sm:flex-row sm:justify-between">
           <div>
