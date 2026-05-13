@@ -18,6 +18,7 @@ import {
   Stagger,
   StaggerItem,
   HoverLift,
+  CountUp,
 } from "@/components/motion";
 
 export const metadata: Metadata = { title: "example-5 · Bento w hero + sekcje" };
@@ -64,7 +65,8 @@ export default function Example5() {
           className="grid auto-rows-[minmax(140px,auto)] grid-cols-1 gap-4 sm:grid-cols-6 lg:grid-cols-12"
         >
           {/* Main hero card */}
-          <div
+          <StaggerItem
+            variant="spring"
             className="relative col-span-1 row-span-3 overflow-hidden rounded-3xl bg-white p-8 shadow-sm sm:col-span-6 lg:col-span-8"
             style={{ minHeight: 460 }}
           >
@@ -100,19 +102,25 @@ export default function Example5() {
               className="absolute -bottom-12 -right-12 h-64 w-64 rounded-full"
               style={{ background: RED, opacity: 0.05 }}
             />
-          </div>
+          </StaggerItem>
 
           {/* Stat dark */}
-          <div className="col-span-1 row-span-1 rounded-3xl bg-neutral-900 p-6 text-white shadow-sm sm:col-span-3 lg:col-span-4">
+          <StaggerItem
+            variant="spring"
+            className="col-span-1 row-span-1 rounded-3xl bg-neutral-900 p-6 text-white shadow-sm sm:col-span-3 lg:col-span-4"
+          >
             <div className="text-xs uppercase tracking-widest text-neutral-400">
               Doświadczenie
             </div>
-            <div className="mt-4 text-6xl font-bold tracking-tight">42</div>
+            <div className="mt-4 text-6xl font-bold tracking-tight tabular-nums">
+              <CountUp to={42} duration={1.8} />
+            </div>
             <div className="mt-1 text-sm text-neutral-400">lata na rynku</div>
-          </div>
+          </StaggerItem>
 
           {/* Stat red */}
-          <div
+          <StaggerItem
+            variant="spring"
             className="col-span-1 row-span-1 rounded-3xl p-6 text-white shadow-sm sm:col-span-3 lg:col-span-4"
             style={{ background: RED }}
           >
@@ -125,10 +133,13 @@ export default function Example5() {
               Prime Food · Pixel
             </div>
             <div className="mt-2 text-sm opacity-80">+ 7 marek</div>
-          </div>
+          </StaggerItem>
 
           {/* Image card */}
-          <div className="col-span-1 row-span-1 overflow-hidden rounded-3xl bg-white shadow-sm sm:col-span-3 lg:col-span-4">
+          <StaggerItem
+            variant="spring"
+            className="col-span-1 row-span-1 overflow-hidden rounded-3xl bg-white shadow-sm sm:col-span-3 lg:col-span-4"
+          >
             <div className="relative h-full min-h-[160px]">
               <Image
                 src="https://flagiosielsko.pl/wp-content/uploads/2026/03/Obrazek-z-flagami-733x1024.png"
@@ -145,14 +156,14 @@ export default function Example5() {
                 <div className="text-lg font-semibold">Flagi gabinetowe SILVER</div>
               </div>
             </div>
-          </div>
+          </StaggerItem>
         </Stagger>
       </section>
 
       {/* === SECTION: About === */}
       <Section eyebrow="01 · O firmie" title="Czterdzieści dwa lata. Jedna rodzina." background="white">
         <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
+          <Reveal y={28} duration={0.9} className="lg:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-neutral-100">
               <Image
                 src="https://flagiosielsko.pl/wp-content/uploads/2026/03/urzad-wojewodzki-150x150.png"
@@ -162,8 +173,8 @@ export default function Example5() {
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
             </div>
-          </div>
-          <div className="lg:col-span-7">
+          </Reveal>
+          <Reveal y={20} duration={0.7} delay={0.15} className="lg:col-span-7">
             <p className="text-xl leading-relaxed text-neutral-800">
               {aboutShort}
             </p>
@@ -172,57 +183,89 @@ export default function Example5() {
               koncernów motoryzacyjnych po samorządy. Każdą flagę mierzymy ręcznie
               przed wysyłką.
             </p>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2">
-              {valueProps.slice(0, 4).map((v) => (
-                <div key={v.label} className="border-l-2 pl-4" style={{ borderColor: RED }}>
-                  <div className="text-xs uppercase tracking-widest text-neutral-500">
-                    {v.label}
-                  </div>
-                  <div className="mt-2 text-3xl font-bold">{v.value}</div>
-                  <div className="mt-1 text-sm text-neutral-600">{v.detail}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+            <Stagger
+              stagger={0.08}
+              className="mt-10 grid gap-6 sm:grid-cols-2"
+            >
+              {valueProps.slice(0, 4).map((v) => {
+                const m = v.value.match(/^([\d,]+)(.*)$/);
+                const isNum = m !== null;
+                const num = isNum ? parseInt(m[1], 10) : 0;
+                const suffix = isNum ? m[2] : "";
+                return (
+                  <StaggerItem
+                    key={v.label}
+                    className="border-l-2 pl-4"
+                    style={{ borderColor: RED }}
+                  >
+                    <div className="text-xs uppercase tracking-widest text-neutral-500">
+                      {v.label}
+                    </div>
+                    <div className="mt-2 text-3xl font-bold tabular-nums">
+                      {isNum ? (
+                        <>
+                          <CountUp to={num} duration={1.6} />
+                          {suffix}
+                        </>
+                      ) : (
+                        v.value
+                      )}
+                    </div>
+                    <div className="mt-1 text-sm text-neutral-600">{v.detail}</div>
+                  </StaggerItem>
+                );
+              })}
+            </Stagger>
+          </Reveal>
         </div>
       </Section>
 
       {/* === SECTION: Products === */}
       <Section id="oferta" eyebrow="02 · Oferta" title="Osiem kategorii produktów" background="muted">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Stagger
+          stagger={0.06}
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {productCategories.map((p) => (
-            <a
-              key={p.slug}
-              href="#"
-              className="group block overflow-hidden rounded-3xl bg-white shadow-sm transition-transform hover:-translate-y-1"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
-                <Image
-                  src={p.image}
-                  alt={p.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                />
-              </div>
-              <div className="p-5">
-                <h3 className="text-lg font-semibold">{p.title}</h3>
-                <p className="mt-1 text-sm text-neutral-500">{p.summary}</p>
-                <div className="mt-4 flex items-center gap-2 text-sm font-medium" style={{ color: RED }}>
-                  Zobacz <span aria-hidden>→</span>
-                </div>
-              </div>
-            </a>
+            <StaggerItem key={p.slug} variant="spring">
+              <HoverLift lift={-6}>
+                <a
+                  href="#"
+                  className="group block overflow-hidden rounded-3xl bg-white shadow-sm"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
+                    <Image
+                      src={p.image}
+                      alt={p.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-lg font-semibold">{p.title}</h3>
+                    <p className="mt-1 text-sm text-neutral-500">{p.summary}</p>
+                    <div className="mt-4 flex items-center gap-2 text-sm font-medium" style={{ color: RED }}>
+                      Zobacz <span aria-hidden>→</span>
+                    </div>
+                  </div>
+                </a>
+              </HoverLift>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </Section>
 
       {/* === SECTION: Techniques === */}
       <Section eyebrow="03 · Rzemiosło" title="Cztery techniki druku" background="white">
-        <div className="grid gap-6 lg:grid-cols-4">
+        <Stagger
+          stagger={0.1}
+          className="grid gap-6 lg:grid-cols-4"
+        >
           {techniques.map((t, i) => (
-            <div
+            <StaggerItem
               key={t.name}
+              variant="spring"
               className="rounded-3xl border border-neutral-200 bg-white p-6"
             >
               <div className="text-xs uppercase tracking-widest text-neutral-500">
@@ -232,9 +275,9 @@ export default function Example5() {
               <p className="mt-3 text-sm leading-relaxed text-neutral-600">
                 {t.short}
               </p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </Section>
 
       {/* === SECTION: Realizations / Gallery === */}
@@ -243,33 +286,40 @@ export default function Example5() {
         title="Marki, które nam zaufały"
         background="muted"
       >
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
+        <Stagger
+          stagger={0.04}
+          className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6"
+        >
           {gallery.map((g) => (
-            <figure
-              key={g.src}
-              className="group relative aspect-square overflow-hidden rounded-2xl bg-white shadow-sm"
-            >
-              <Image
-                src={g.src}
-                alt={g.caption}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 50vw, 16vw"
-              />
-              {g.client && (
-                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-3 py-2 text-[10px] font-medium uppercase tracking-widest text-white opacity-0 transition-opacity group-hover:opacity-100">
-                  {g.client}
-                </figcaption>
-              )}
-            </figure>
+            <StaggerItem key={g.src}>
+              <figure className="group relative aspect-square overflow-hidden rounded-2xl bg-white shadow-sm">
+                <Image
+                  src={g.src}
+                  alt={g.caption}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, 16vw"
+                />
+                {g.client && (
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-3 py-2 text-[10px] font-medium uppercase tracking-widest text-white opacity-0 transition-opacity group-hover:opacity-100">
+                    {g.client}
+                  </figcaption>
+                )}
+              </figure>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
 
-        <div className="mt-12 flex flex-wrap gap-x-8 gap-y-2 text-sm font-medium text-neutral-700">
+        <Reveal
+          y={16}
+          duration={0.7}
+          delay={0.2}
+          className="mt-12 flex flex-wrap gap-x-8 gap-y-2 text-sm font-medium text-neutral-700"
+        >
           {clients.map((c) => (
             <span key={c}>{c}</span>
           ))}
-        </div>
+        </Reveal>
       </Section>
 
       {/* === SECTION: Pricing === */}
@@ -279,12 +329,13 @@ export default function Example5() {
         kicker="Standardowe rozmiary · pozostałe — wycena indywidualna"
         background="white"
       >
-        <div className="grid gap-6 lg:grid-cols-3">
+        <Stagger stagger={0.12} className="grid gap-6 lg:grid-cols-3">
           {pricing.groups.map((g, idx) => (
-            <div
+            <StaggerItem
               key={g.title}
+              variant="spring"
               className={`rounded-3xl p-6 ${idx === 0 ? "text-white" : "bg-white border border-neutral-200"}`}
-              style={idx === 0 ? { background: INK } : {}}
+              style={idx === 0 ? { background: INK } : undefined}
             >
               <div className="text-xs uppercase tracking-widest" style={{ color: idx === 0 ? RED : "#737373" }}>
                 {g.title}
@@ -304,17 +355,20 @@ export default function Example5() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </Section>
 
       {/* === SECTION: FAQ — bento cards === */}
       <Section eyebrow="06 · FAQ" title="Najczęściej zadawane pytania" background="white">
-        <div className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Stagger
+          stagger={0.05}
+          className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {faqs.map((f, i) => (
+            <StaggerItem key={f.q}>
             <details
-              key={f.q}
               className="group rounded-3xl bg-white p-6 shadow-sm transition-shadow hover:shadow-md open:shadow-md"
             >
               <summary className="flex cursor-pointer items-start justify-between gap-3 list-none">
@@ -343,15 +397,16 @@ export default function Example5() {
                 {f.a}
               </p>
             </details>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </Section>
 
       {/* === SECTION: CTA === */}
       <section className="px-6 py-24" style={{ background: INK }}>
-        <div className="mx-auto max-w-4xl text-center text-white">
+        <Reveal y={28} duration={0.8} className="mx-auto max-w-4xl text-center text-white">
           <p className="text-xs uppercase tracking-[0.3em] text-neutral-400">
-            06 · Kontakt
+            07 · Kontakt
           </p>
           <h2 className="mt-6 text-5xl font-bold leading-tight sm:text-6xl">
             Zaprojektujmy <span style={{ color: RED }}>Twoją flagę.</span>
@@ -373,7 +428,7 @@ export default function Example5() {
               {company.primaryEmail}
             </a>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Footer */}
