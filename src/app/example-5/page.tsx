@@ -57,8 +57,12 @@ export default function Example5() {
         </div>
       </header>
 
-      {/* === HERO BENTO === */}
-      <section className="mx-auto max-w-7xl px-6 pt-16 pb-24 sm:pt-24">
+      {/* === HERO BENTO === sticky-stack layer 1 */}
+      <section
+        className="sticky top-0 z-[1] px-6 pt-16 pb-24 sm:pt-24"
+        style={{ background: BG }}
+      >
+        <div className="mx-auto max-w-7xl">
         <Stagger
           stagger={0.08}
           className="grid auto-rows-[minmax(140px,auto)] grid-cols-1 gap-4 sm:grid-cols-6 lg:grid-cols-12"
@@ -157,10 +161,11 @@ export default function Example5() {
             </div>
           </StaggerItem>
         </Stagger>
+        </div>
       </section>
 
       {/* === SECTION: About === */}
-      <Section eyebrow="01 · O firmie" title="Czterdzieści dwa lata. Jedna rodzina." background="white">
+      <Section z={2} eyebrow="01 · O firmie" title="Czterdzieści dwa lata. Jedna rodzina." background="white">
         <div className="grid gap-12 lg:grid-cols-12">
           <Reveal y={28} duration={0.9} className="lg:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-neutral-100">
@@ -220,7 +225,7 @@ export default function Example5() {
       </Section>
 
       {/* === SECTION: Products === */}
-      <Section id="oferta" eyebrow="02 · Oferta" title="Osiem kategorii produktów" background="muted">
+      <Section z={3} id="oferta" eyebrow="02 · Oferta" title="Osiem kategorii produktów" background="muted">
         <Stagger
           stagger={0.06}
           className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
@@ -256,7 +261,7 @@ export default function Example5() {
       </Section>
 
       {/* === SECTION: Techniques === */}
-      <Section eyebrow="03 · Rzemiosło" title="Cztery techniki druku" background="white">
+      <Section z={4} eyebrow="03 · Rzemiosło" title="Cztery techniki druku" background="white">
         <Stagger
           stagger={0.1}
           className="grid gap-6 lg:grid-cols-4"
@@ -281,6 +286,7 @@ export default function Example5() {
 
       {/* === SECTION: Realizations / Gallery === */}
       <Section
+        z={5}
         eyebrow="04 · Realizacje"
         title="Marki, które nam zaufały"
         background="muted"
@@ -323,6 +329,7 @@ export default function Example5() {
 
       {/* === SECTION: Pricing === */}
       <Section
+        z={6}
         eyebrow="05 · Cennik"
         title="Ceny brutto za sztukę"
         kicker="Standardowe rozmiary · pozostałe — wycena indywidualna"
@@ -360,7 +367,7 @@ export default function Example5() {
       </Section>
 
       {/* === SECTION: FAQ — bento cards === */}
-      <Section eyebrow="06 · FAQ" title="Najczęściej zadawane pytania" background="white">
+      <Section z={7} eyebrow="06 · FAQ" title="Najczęściej zadawane pytania" background="white">
         <Stagger
           stagger={0.05}
           className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3"
@@ -401,8 +408,11 @@ export default function Example5() {
         </Stagger>
       </Section>
 
-      {/* === SECTION: CTA === */}
-      <section className="px-6 py-24" style={{ background: INK }}>
+      {/* === SECTION: CTA === sticky-stack layer 8 */}
+      <section
+        className="sticky top-0 z-[8] border-t border-neutral-900 px-6 py-24 shadow-[0_-16px_50px_-12px_rgba(0,0,0,0.35)]"
+        style={{ background: INK }}
+      >
         <Reveal y={28} duration={0.8} className="mx-auto max-w-4xl text-center text-white">
           <p className="text-xs uppercase tracking-[0.3em] text-neutral-400">
             07 · Kontakt
@@ -483,6 +493,7 @@ function Section({
   title,
   kicker,
   background,
+  z,
   children,
 }: {
   id?: string;
@@ -490,13 +501,22 @@ function Section({
   title: string;
   kicker?: string;
   background: "white" | "muted";
+  /** When provided, the section becomes part of the sticky-stack at this z-index. */
+  z?: number;
   children: React.ReactNode;
 }) {
   return (
     <section
       id={id}
-      className="px-6 py-24"
-      style={{ background: background === "white" ? "white" : BG }}
+      className={
+        z !== undefined
+          ? "sticky top-0 border-t border-neutral-200 px-6 py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]"
+          : "px-6 py-24"
+      }
+      style={{
+        background: background === "white" ? "white" : BG,
+        zIndex: z,
+      }}
     >
       <div className="mx-auto max-w-7xl">
         <Reveal y={20} duration={0.7}>

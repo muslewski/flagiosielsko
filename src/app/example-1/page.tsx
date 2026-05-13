@@ -35,8 +35,9 @@ export default function Example1() {
     <MotionRoot>
     <main
       style={{ background: PALETTE.paper, color: PALETTE.ink }}
-      className="font-display"
+      className="relative font-display"
     >
+      <PaperGrain />
 
       {/* Top bar — sticky, paper-tinted glass */}
       <header
@@ -75,17 +76,28 @@ export default function Example1() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="mx-auto max-w-7xl px-8 pt-20 pb-24">
+      {/* Hero — sticky-stack layer 1 */}
+      <section
+        className="sticky top-0 z-[1] px-8 pt-20 pb-24"
+        style={{ background: PALETTE.paper }}
+      >
+        <div className="mx-auto max-w-7xl">
         <div className="grid items-end gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Reveal y={12} duration={0.6}>
-              <p
-                className="font-sans text-xs uppercase tracking-[0.4em]"
-                style={{ color: PALETTE.gold }}
-              >
-                Est. 1984 · Osielsko · Kujawsko-Pomorskie
-              </p>
+              <div className="flex items-center gap-4">
+                <span
+                  className="h-px w-10"
+                  style={{ background: PALETTE.gold }}
+                  aria-hidden
+                />
+                <p
+                  className="font-sans text-xs uppercase tracking-[0.4em]"
+                  style={{ color: PALETTE.gold }}
+                >
+                  Est. MCMLXXXIV · Osielsko · Kujawsko-Pomorskie
+                </p>
+              </div>
             </Reveal>
             <h1 className="mt-8 font-display text-[clamp(2.8rem,6.5vw,5.5rem)] font-bold leading-[1.02] tracking-tight">
               <TextReveal text="Flagi szyte z pasją" stagger={0.08} duration={0.8} />
@@ -181,11 +193,12 @@ export default function Example1() {
             </StaggerItem>
           ))}
         </Stagger>
+        </div>
       </section>
 
-      {/* About */}
+      {/* About — sticky-stack layer 2 */}
       <section
-        className="py-24"
+        className="sticky top-0 z-[2] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
         style={{ background: PALETTE.cream }}
       >
         <div className="mx-auto grid max-w-7xl gap-12 px-8 lg:grid-cols-12">
@@ -223,11 +236,11 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Timeline — sticky-stack layer 3 */}
       <section
-        className="border-y py-24"
+        className="sticky top-0 z-[3] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
         style={{
-          borderColor: "rgba(26,22,18,0.12)",
+          borderTopColor: "rgba(26,22,18,0.12)",
           background: PALETTE.paper,
         }}
       >
@@ -316,8 +329,79 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* Products */}
-      <section id="oferta" className="mx-auto max-w-7xl px-8 py-24">
+      {/* NEW: Pull quote — sticky-stack layer 4 */}
+      <section
+        className="sticky top-0 z-[4] border-t px-8 py-32 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
+        style={{
+          background: PALETTE.cream,
+          borderTopColor: "rgba(26,22,18,0.12)",
+        }}
+      >
+        <div className="mx-auto max-w-5xl text-center">
+          <Reveal y={16} duration={0.7}>
+            <div
+              className="mx-auto h-px w-12"
+              style={{ background: PALETTE.red }}
+              aria-hidden
+            />
+          </Reveal>
+          <Reveal y={24} duration={0.9} delay={0.15}>
+            <blockquote className="mt-10 font-display text-[clamp(2rem,4.5vw,3.5rem)] italic font-medium leading-[1.15] text-neutral-800">
+              <span
+                aria-hidden
+                className="mr-2 align-top text-5xl"
+                style={{ color: PALETTE.red }}
+              >
+                „
+              </span>
+              Pracujemy dla koncernów motoryzacyjnych, samorządów i federacji
+              sportowych. Każde zlecenie to{" "}
+              <span style={{ color: PALETTE.red }} className="not-italic">
+                ten sam egzamin
+              </span>{" "}
+              — wytrzymać próbę wiatru i czasu.
+              <span
+                aria-hidden
+                className="ml-2 align-top text-5xl"
+                style={{ color: PALETTE.red }}
+              >
+                "
+              </span>
+            </blockquote>
+          </Reveal>
+          <Reveal y={12} duration={0.6} delay={0.4}>
+            <div className="mt-10 flex items-center justify-center gap-4">
+              <span
+                className="h-px w-8"
+                style={{ background: PALETTE.gold }}
+                aria-hidden
+              />
+              <p
+                className="font-sans text-xs uppercase tracking-[0.4em]"
+                style={{ color: PALETTE.gold }}
+              >
+                Z pracowni, 2026
+              </p>
+              <span
+                className="h-px w-8"
+                style={{ background: PALETTE.gold }}
+                aria-hidden
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Products — sticky-stack layer 5 */}
+      <section
+        id="oferta"
+        className="sticky top-0 z-[5] border-t px-8 py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
+        style={{
+          background: PALETTE.paper,
+          borderTopColor: "rgba(26,22,18,0.12)",
+        }}
+      >
+        <div className="mx-auto max-w-7xl">
         <Reveal y={20} duration={0.7}>
           <div className="flex items-end justify-between">
             <div>
@@ -384,12 +468,17 @@ export default function Example1() {
             </StaggerItem>
           ))}
         </Stagger>
+        </div>
       </section>
 
-      {/* Gallery + clients */}
+      {/* Gallery + clients — sticky-stack layer 6 */}
       <section
-        className="py-24"
-        style={{ background: PALETTE.ink, color: PALETTE.cream }}
+        className="sticky top-0 z-[6] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.25)]"
+        style={{
+          background: PALETTE.ink,
+          color: PALETTE.cream,
+          borderTopColor: "rgba(245,239,230,0.15)",
+        }}
       >
         <div className="mx-auto max-w-7xl px-8">
           <Reveal y={20} duration={0.7}>
@@ -437,11 +526,11 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* FAQ — editorial */}
+      {/* FAQ — sticky-stack layer 7 */}
       <section
-        className="border-y py-24"
+        className="sticky top-0 z-[7] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
         style={{
-          borderColor: "rgba(26,22,18,0.12)",
+          borderTopColor: "rgba(26,22,18,0.12)",
           background: PALETTE.cream,
         }}
       >
@@ -495,10 +584,13 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA — sticky-stack layer 8 */}
       <section
-        className="py-24"
-        style={{ background: PALETTE.paper }}
+        className="sticky top-0 z-[8] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
+        style={{
+          background: PALETTE.paper,
+          borderTopColor: "rgba(26,22,18,0.12)",
+        }}
       >
         <div className="mx-auto max-w-4xl px-8 text-center">
           <Reveal y={20} duration={0.7}>
@@ -554,6 +646,20 @@ export default function Example1() {
       </footer>
     </main>
     </MotionRoot>
+  );
+}
+
+function PaperGrain() {
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none fixed inset-0 z-[40] opacity-[0.05] mix-blend-multiply"
+      style={{
+        backgroundImage:
+          "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='220' height='220' filter='url(%23n)' opacity='0.85'/></svg>\")",
+        backgroundSize: "220px 220px",
+      }}
+    />
   );
 }
 
