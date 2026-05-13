@@ -225,8 +225,8 @@ export default function Example5() {
         </div>
       </Section>
 
-      {/* === SECTION: Products === */}
-      <Section z={3} id="oferta" eyebrow="02 · Oferta" title="Osiem kategorii produktów" background="muted">
+      {/* === SECTION: Products === scrolls naturally (taller than viewport) */}
+      <Section id="oferta" eyebrow="02 · Oferta" title="Osiem kategorii produktów" background="muted">
         <Stagger
           stagger={0.06}
           className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
@@ -285,9 +285,8 @@ export default function Example5() {
         </Stagger>
       </Section>
 
-      {/* === SECTION: Realizations / Gallery === */}
+      {/* === SECTION: Realizations / Gallery === scrolls naturally (16 figures) */}
       <Section
-        z={5}
         eyebrow="04 · Realizacje"
         title="Marki, które nam zaufały"
         background="muted"
@@ -367,8 +366,8 @@ export default function Example5() {
         </Stagger>
       </Section>
 
-      {/* === SECTION: FAQ — bento cards === */}
-      <Section z={7} eyebrow="06 · FAQ" title="Najczęściej zadawane pytania" background="white">
+      {/* === SECTION: FAQ — bento cards === scrolls naturally (cards expand) */}
+      <Section eyebrow="06 · FAQ" title="Najczęściej zadawane pytania" background="white">
         <Stagger
           stagger={0.05}
           className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3"

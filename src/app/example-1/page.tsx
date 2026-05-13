@@ -392,10 +392,10 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* Products — sticky-stack layer 5 */}
+      {/* Products — scrolls naturally (8 cards exceed viewport) */}
       <section
         id="oferta"
-        className="sticky top-0 z-[5] border-t px-8 py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
+        className="border-t px-8 py-24"
         style={{
           background: PALETTE.paper,
           borderTopColor: "rgba(26,22,18,0.12)",
@@ -471,9 +471,9 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* Gallery + clients — sticky-stack layer 6 */}
+      {/* Gallery + clients — scrolls naturally (12 thumbs + clients list) */}
       <section
-        className="sticky top-0 z-[6] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.25)]"
+        className="border-t py-24"
         style={{
           background: PALETTE.ink,
           color: PALETTE.cream,
@@ -526,9 +526,9 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* FAQ — sticky-stack layer 7 */}
+      {/* FAQ — scrolls naturally (6 Q/A rows exceed viewport) */}
       <section
-        className="sticky top-0 z-[7] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
+        className="border-t py-24"
         style={{
           borderTopColor: "rgba(26,22,18,0.12)",
           background: PALETTE.cream,
