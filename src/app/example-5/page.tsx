@@ -19,6 +19,7 @@ import {
   StaggerItem,
   HoverLift,
   CountUp,
+  MotionAccordion,
 } from "@/components/motion";
 
 export const metadata: Metadata = { title: "example-5 · Bento w hero + sekcje" };
@@ -374,35 +375,37 @@ export default function Example5() {
         >
           {faqs.map((f, i) => (
             <StaggerItem key={f.q}>
-            <details
-              className="group rounded-3xl bg-white p-6 shadow-sm transition-shadow hover:shadow-md open:shadow-md"
-            >
-              <summary className="flex cursor-pointer items-start justify-between gap-3 list-none">
-                <div className="flex items-baseline gap-3">
-                  <span
-                    className="rounded-full px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest"
-                    style={{
-                      background: i % 2 === 0 ? RED : INK,
-                      color: "white",
-                    }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-base font-semibold leading-snug">
-                    {f.q}
-                  </span>
-                </div>
-                <span
-                  className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-neutral-100 text-base transition-transform group-open:rotate-45"
-                  aria-hidden
-                >
-                  +
-                </span>
-              </summary>
-              <p className="mt-4 border-t border-neutral-100 pt-4 text-sm leading-relaxed text-neutral-600">
-                {f.a}
-              </p>
-            </details>
+              <MotionAccordion
+                className="rounded-3xl bg-white p-6 shadow-sm transition-shadow hover:shadow-md data-[open=true]:shadow-md"
+                summary={
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-baseline gap-3">
+                      <span
+                        className="rounded-full px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest"
+                        style={{
+                          background: i % 2 === 0 ? RED : INK,
+                          color: "white",
+                        }}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-base font-semibold leading-snug">
+                        {f.q}
+                      </span>
+                    </div>
+                    <span
+                      className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-neutral-100 text-base transition-transform group-data-[open=true]:rotate-45"
+                      aria-hidden
+                    >
+                      +
+                    </span>
+                  </div>
+                }
+              >
+                <p className="mt-4 border-t border-neutral-100 pt-4 text-sm leading-relaxed text-neutral-600">
+                  {f.a}
+                </p>
+              </MotionAccordion>
             </StaggerItem>
           ))}
         </Stagger>

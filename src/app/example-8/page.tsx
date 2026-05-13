@@ -17,6 +17,7 @@ import {
   CountUp,
   Stagger,
   StaggerItem,
+  MotionAccordion,
 } from "@/components/motion";
 
 export const metadata: Metadata = { title: "example-8 · Patriotyczny hero" };
@@ -448,33 +449,35 @@ export default function Example8() {
 
           <div className="mt-12 grid items-start gap-4 sm:grid-cols-2">
             {faqs.map((f, i) => (
-              <details
+              <MotionAccordion
                 key={f.q}
-                className="group rounded-2xl border border-neutral-200 bg-white p-6 open:border-neutral-300 open:shadow-md"
-              >
-                <summary className="flex cursor-pointer items-start justify-between gap-3 list-none">
-                  <div className="flex items-baseline gap-3">
+                className="rounded-2xl border border-neutral-200 bg-white p-6 data-[open=true]:border-neutral-300 data-[open=true]:shadow-md"
+                summary={
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-baseline gap-3">
+                      <span
+                        className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums text-white"
+                        style={{ background: PL_RED }}
+                      >
+                        {i + 1}
+                      </span>
+                      <span className="text-base font-semibold leading-snug">
+                        {f.q}
+                      </span>
+                    </div>
                     <span
-                      className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums text-white"
-                      style={{ background: PL_RED }}
+                      className="text-xl text-neutral-400 transition-transform group-data-[open=true]:rotate-45"
+                      aria-hidden
                     >
-                      {i + 1}
-                    </span>
-                    <span className="text-base font-semibold leading-snug">
-                      {f.q}
+                      +
                     </span>
                   </div>
-                  <span
-                    className="text-xl text-neutral-400 transition-transform group-open:rotate-45"
-                    aria-hidden
-                  >
-                    +
-                  </span>
-                </summary>
+                }
+              >
                 <p className="mt-4 border-t border-neutral-200 pt-4 text-sm leading-relaxed text-neutral-700">
                   {f.a}
                 </p>
-              </details>
+              </MotionAccordion>
             ))}
           </div>
         </div>

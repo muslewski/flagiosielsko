@@ -10,6 +10,7 @@ import {
   useScroll,
   useTransform,
   MotionConfig,
+  AnimatePresence,
   type Variants,
 } from "framer-motion";
 import { useRef, useState, useEffect, type ReactNode, type CSSProperties } from "react";
@@ -419,6 +420,66 @@ export function Magnetic({
     >
       {children}
     </motion.div>
+  );
+}
+
+/**
+ * MotionAccordion — smooth height/opacity collapse using AnimatePresence.
+ * Drop-in replacement for native <details>/<summary> with animation.
+ *
+ * Marks the outer wrapper with `group` and `data-open="true"|"false"` so
+ * existing Tailwind selectors translate cleanly:
+ *   - `open:bg-X`        → `data-[open=true]:bg-X`
+ *   - `group-open:rotate-45` → `group-data-[open=true]:rotate-45`
+ *
+ * The trigger is a real <button>, so keyboard + aria-expanded work for free.
+ */
+export function MotionAccordion({
+  summary,
+  children,
+  className,
+  style,
+  defaultOpen = false,
+}: {
+  summary: ReactNode;
+  children: ReactNode;
+  className?: string;
+  style?: CSSProperties;
+  defaultOpen?: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div
+      className={className ? `group ${className}` : "group"}
+      style={style}
+      data-open={open ? "true" : "false"}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="block w-full cursor-pointer text-left"
+      >
+        {summary}
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            key="panel"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{
+              height: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+              opacity: { duration: 0.25, ease: "easeOut" },
+            }}
+            style={{ overflow: "hidden" }}
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
 

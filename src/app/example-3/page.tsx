@@ -16,6 +16,7 @@ import {
   Stagger,
   StaggerItem,
   CountUp,
+  MotionAccordion,
 } from "@/components/motion";
 
 export const metadata: Metadata = { title: "example-3 · Statement / typografia" };
@@ -301,34 +302,39 @@ export default function Example3() {
 
           <div className="mt-0 divide-y-2 divide-black">
             {faqs.map((f, i) => (
-              <details key={f.q} className="group py-10">
-                <summary className="flex cursor-pointer items-start justify-between gap-6 list-none">
-                  <div className="flex flex-1 flex-wrap items-baseline gap-6">
+              <MotionAccordion
+                key={f.q}
+                className="py-10"
+                summary={
+                  <div className="flex items-start justify-between gap-6">
+                    <div className="flex flex-1 flex-wrap items-baseline gap-6">
+                      <span
+                        className="font-mono text-base tabular-nums"
+                        style={{ color: RED }}
+                      >
+                        Q.{String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className="font-black uppercase leading-[0.9] tracking-[-0.03em]"
+                        style={{ fontSize: "clamp(1.5rem, 4vw, 3.5rem)" }}
+                      >
+                        {f.q}
+                      </span>
+                    </div>
                     <span
-                      className="font-mono text-base tabular-nums"
-                      style={{ color: RED }}
+                      className="mt-3 grid h-12 w-12 flex-shrink-0 place-items-center border-2 border-black text-2xl font-black transition-transform group-data-[open=true]:rotate-45"
+                      aria-hidden
                     >
-                      Q.{String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span
-                      className="font-black uppercase leading-[0.9] tracking-[-0.03em]"
-                      style={{ fontSize: "clamp(1.5rem, 4vw, 3.5rem)" }}
-                    >
-                      {f.q}
+                      +
                     </span>
                   </div>
-                  <span
-                    className="mt-3 grid h-12 w-12 flex-shrink-0 place-items-center border-2 border-black text-2xl font-black transition-transform group-open:rotate-45"
-                    aria-hidden
-                  >
-                    +
-                  </span>
-                </summary>
+                }
+              >
                 <p className="mt-6 max-w-3xl pl-0 text-lg leading-relaxed sm:pl-24">
                   <span className="font-mono text-base mr-3" style={{ color: RED }}>A.</span>
                   {f.a}
                 </p>
-              </details>
+              </MotionAccordion>
             ))}
           </div>
         </div>

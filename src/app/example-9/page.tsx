@@ -16,6 +16,7 @@ import {
   TextReveal,
   Stagger,
   StaggerItem,
+  MotionAccordion,
 } from "@/components/motion";
 
 export const metadata: Metadata = { title: "example-9 · Rzemiosło / artisan" };
@@ -533,35 +534,37 @@ export default function Example9() {
 
           <div className="mt-16 grid items-start gap-6 sm:grid-cols-2">
             {faqs.map((f, i) => (
-              <details
+              <MotionAccordion
                 key={f.q}
-                className="group rounded-3xl bg-white p-8 shadow-sm"
+                className="rounded-3xl bg-white p-8 shadow-sm"
                 style={{ borderLeft: `4px solid ${TERRACOTTA}` }}
-              >
-                <summary className="flex cursor-pointer items-baseline justify-between gap-3 list-none">
-                  <div className="flex items-baseline gap-4">
+                summary={
+                  <div className="flex items-baseline justify-between gap-3">
+                    <div className="flex items-baseline gap-4">
+                      <span
+                        className="font-warm text-3xl italic font-bold leading-none"
+                        style={{ color: TERRACOTTA }}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="font-warm text-xl font-bold">{f.q}</span>
+                    </div>
                     <span
-                      className="font-warm text-3xl italic font-bold leading-none"
-                      style={{ color: TERRACOTTA }}
+                      className="text-2xl text-neutral-400 transition-transform group-data-[open=true]:rotate-45"
+                      aria-hidden
                     >
-                      {String(i + 1).padStart(2, "0")}
+                      +
                     </span>
-                    <span className="font-warm text-xl font-bold">{f.q}</span>
                   </div>
-                  <span
-                    className="text-2xl text-neutral-400 transition-transform group-open:rotate-45"
-                    aria-hidden
-                  >
-                    +
-                  </span>
-                </summary>
+                }
+              >
                 <p
                   className="mt-5 border-t pt-5 font-warm text-base leading-relaxed text-neutral-700"
                   style={{ borderColor: "rgba(42,34,28,0.12)" }}
                 >
                   {f.a}
                 </p>
-              </details>
+              </MotionAccordion>
             ))}
           </div>
 

@@ -17,6 +17,7 @@ import {
   StaggerItem,
   TextReveal,
   Pulse,
+  MotionAccordion,
 } from "@/components/motion";
 
 export const metadata: Metadata = { title: "example-4 · Mroczne kino · premium" };
@@ -384,33 +385,35 @@ export default function Example4() {
             <div className="lg:col-span-8">
               <div className="grid items-start gap-3 sm:grid-cols-2">
                 {faqs.map((f, i) => (
-                  <details
+                  <MotionAccordion
                     key={f.q}
-                    className="group rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl transition-colors open:bg-white/[0.07]"
-                  >
-                    <summary className="flex cursor-pointer items-baseline justify-between gap-3 list-none">
-                      <div className="flex items-baseline gap-3">
+                    className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl transition-colors data-[open=true]:bg-white/[0.07]"
+                    summary={
+                      <div className="flex items-baseline justify-between gap-3">
+                        <div className="flex items-baseline gap-3">
+                          <span
+                            className="font-mono text-[10px] uppercase tracking-[0.25em]"
+                            style={{ color: RED }}
+                          >
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                          <span className="text-base font-semibold leading-snug">
+                            {f.q}
+                          </span>
+                        </div>
                         <span
-                          className="font-mono text-[10px] uppercase tracking-[0.25em]"
-                          style={{ color: RED }}
+                          className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full border border-white/20 text-xs transition-transform group-data-[open=true]:rotate-45"
+                          aria-hidden
                         >
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <span className="text-base font-semibold leading-snug">
-                          {f.q}
+                          +
                         </span>
                       </div>
-                      <span
-                        className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full border border-white/20 text-xs transition-transform group-open:rotate-45"
-                        aria-hidden
-                      >
-                        +
-                      </span>
-                    </summary>
+                    }
+                  >
                     <p className="mt-4 border-t border-white/10 pt-4 text-sm leading-relaxed text-neutral-300">
                       {f.a}
                     </p>
-                  </details>
+                  </MotionAccordion>
                 ))}
               </div>
             </div>
