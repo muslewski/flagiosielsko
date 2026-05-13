@@ -47,18 +47,19 @@ export default function Example1() {
           background: "rgba(251,247,240,0.85)",
         }}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
-          <div className="flex items-baseline gap-3">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-8 sm:py-6">
+          <div className="flex min-w-0 items-baseline gap-2 sm:gap-3">
             <span
-              className="font-display text-2xl font-bold tracking-tight"
+              className="font-display text-xl font-bold tracking-tight sm:text-2xl"
               style={{ color: PALETTE.red }}
             >
               J-ART
             </span>
-            <span className="font-sans text-xs uppercase tracking-[0.3em] text-neutral-700">
+            <span className="hidden truncate font-sans text-xs uppercase tracking-[0.3em] text-neutral-700 sm:inline">
               Manufaktura flag · od 1984
             </span>
           </div>
+
           <nav className="hidden gap-8 font-sans text-sm md:flex">
             {["O nas", "Oferta", "Realizacje", "Cennik", "Kontakt"].map((l) => (
               <a key={l} className="hover:opacity-60" href="#">
@@ -66,19 +67,59 @@ export default function Example1() {
               </a>
             ))}
           </nav>
-          <a
-            href={company.phoneHref}
-            className="rounded-full px-5 py-2 font-sans text-sm font-medium text-white shadow-sm transition-opacity hover:opacity-90"
-            style={{ background: PALETTE.red }}
-          >
-            Zamów wycenę
-          </a>
+
+          <div className="flex flex-shrink-0 items-center gap-2">
+            {/* Mobile menu — native <details> dropdown */}
+            <details className="relative md:hidden">
+              <summary
+                aria-label="Menu"
+                className="grid h-9 w-9 cursor-pointer place-items-center rounded-full border list-none [&::-webkit-details-marker]:hidden"
+                style={{ borderColor: "rgba(26,22,18,0.25)" }}
+              >
+                <span className="space-y-[3px]" aria-hidden>
+                  <span className="block h-px w-4" style={{ background: PALETTE.ink }} />
+                  <span className="block h-px w-4" style={{ background: PALETTE.ink }} />
+                  <span className="block h-px w-4" style={{ background: PALETTE.ink }} />
+                </span>
+              </summary>
+              <nav
+                className="absolute right-0 top-full z-50 mt-2 w-48 border bg-[color:var(--paper)] p-4 shadow-lg"
+                style={
+                  {
+                    borderColor: "rgba(26,22,18,0.12)",
+                    background: PALETTE.paper,
+                  } as React.CSSProperties
+                }
+              >
+                <ul className="flex flex-col gap-3 font-sans text-sm">
+                  {["O nas", "Oferta", "Realizacje", "Cennik", "Kontakt"].map(
+                    (l) => (
+                      <li key={l}>
+                        <a href="#" className="block hover:opacity-60">
+                          {l}
+                        </a>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </nav>
+            </details>
+
+            <a
+              href={company.phoneHref}
+              className="rounded-full px-3 py-1.5 font-sans text-xs font-medium text-white shadow-sm transition-opacity hover:opacity-90 sm:px-5 sm:py-2 sm:text-sm"
+              style={{ background: PALETTE.red }}
+            >
+              <span className="sm:hidden">Wycena</span>
+              <span className="hidden sm:inline">Zamów wycenę</span>
+            </a>
+          </div>
         </div>
       </header>
 
       {/* Hero — natural-flow but positioned (z=1) so it sits in the stacking ladder */}
       <section
-        className="relative z-[1] px-8 pt-20 pb-24"
+        className="relative z-[1] px-4 pt-12 pb-14 sm:px-8 sm:pt-20 sm:pb-24"
         style={{ background: PALETTE.paper }}
       >
         <div className="mx-auto max-w-7xl">
@@ -196,9 +237,9 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* About — sticky-stack layer 2 */}
+      {/* About — sticky-stack layer 2 (mobile: relative, only pins at lg+) */}
       <section
-        className="sticky top-0 z-[2] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
+        className="relative z-[2] border-t py-16 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)] sm:py-24 lg:sticky lg:top-0"
         style={{ background: PALETTE.cream }}
       >
         <div className="mx-auto grid max-w-7xl gap-12 px-8 lg:grid-cols-12">
@@ -238,7 +279,7 @@ export default function Example1() {
 
       {/* Timeline — natural-flow but positioned (z=3) so it covers pinned About (z=2) */}
       <section
-        className="relative z-[3] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
+        className="relative z-[3] border-t py-16 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)] sm:py-24"
         style={{
           borderTopColor: "rgba(26,22,18,0.12)",
           background: PALETTE.paper,
@@ -329,9 +370,9 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* NEW: Pull quote — sticky-stack layer 4 */}
+      {/* NEW: Pull quote — sticky-stack layer 4 (mobile: relative) */}
       <section
-        className="sticky top-0 z-[4] border-t px-8 py-32 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
+        className="relative z-[4] border-t px-4 py-20 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)] sm:px-8 sm:py-32 lg:sticky lg:top-0"
         style={{
           background: PALETTE.cream,
           borderTopColor: "rgba(26,22,18,0.12)",
@@ -395,7 +436,7 @@ export default function Example1() {
       {/* Products — natural-flow but positioned (z=5) so it covers pinned Pull-quote (z=4) */}
       <section
         id="oferta"
-        className="relative z-[5] border-t px-8 py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
+        className="relative z-[5] border-t px-4 py-16 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)] sm:px-8 sm:py-24"
         style={{
           background: PALETTE.paper,
           borderTopColor: "rgba(26,22,18,0.12)",
@@ -473,7 +514,7 @@ export default function Example1() {
 
       {/* Gallery + clients — natural-flow but positioned (z=6) to cover Products underneath */}
       <section
-        className="relative z-[6] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.25)]"
+        className="relative z-[6] border-t py-16 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.25)] sm:py-24"
         style={{
           background: PALETTE.ink,
           color: PALETTE.cream,
@@ -528,7 +569,7 @@ export default function Example1() {
 
       {/* FAQ — natural-flow but positioned (z=7) to cover prior sections */}
       <section
-        className="relative z-[7] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
+        className="relative z-[7] border-t py-16 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)] sm:py-24"
         style={{
           borderTopColor: "rgba(26,22,18,0.12)",
           background: PALETTE.cream,
@@ -584,9 +625,9 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* CTA — sticky-stack layer 8 */}
+      {/* CTA — sticky-stack layer 8 (mobile: relative) */}
       <section
-        className="sticky top-0 z-[8] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
+        className="relative z-[8] border-t py-16 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)] sm:py-24 lg:sticky lg:top-0"
         style={{
           background: PALETTE.paper,
           borderTopColor: "rgba(26,22,18,0.12)",
