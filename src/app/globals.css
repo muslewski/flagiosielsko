@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-luxury: var(--font-cormorant), ui-serif, Georgia, serif;
+  --font-grotesk: var(--font-space-grotesk), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-warm: var(--font-lora), ui-serif, Georgia, serif;
+
+  --color-polish-red: #dc143c;
+  --color-polish-red-deep: #b1102f;
+  --color-cream: #f5efe6;
+  --color-ink: #0a0a0a;
+}
+
+html,
+body {
+  background: #ffffff;
+  color: #0a0a0a;
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force lining figures on serif/display fonts — Playfair, Cormorant, Lora
+   default to old-style figures which look "weirdly positioned" for dates like 1984. */
+.font-display,
+.font-luxury,
+.font-warm {
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1;
+}
+
+/* Tabular figures for any numeric column / clock context */
+.tabular-nums {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
