@@ -178,10 +178,10 @@ export default function Example2() {
           </div>
         </section>
 
-        {/* 4. PRODUCTS — sticky (natural taller than viewport) */}
+        {/* 4. PRODUCTS — scrolls naturally (8 product rows exceed viewport) */}
         <section
           id="oferta"
-          className="sticky top-0 z-[4] border-t border-neutral-200 bg-white shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]"
+          className="border-t border-neutral-200 bg-white"
         >
           <div className="mx-auto max-w-[1400px] px-10 py-20">
             <Reveal y={20} duration={0.7} className="grid grid-cols-12 gap-6 pb-12">
@@ -234,8 +234,8 @@ export default function Example2() {
           </div>
         </section>
 
-        {/* 5. GALLERY — sticky */}
-        <section className="sticky top-0 z-[5] border-t border-neutral-200 bg-neutral-50 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.1)]">
+        {/* 5. GALLERY — scrolls naturally (16 figures) */}
+        <section className="border-t border-neutral-200 bg-neutral-50">
           <div className="mx-auto max-w-[1400px] px-10 py-20">
             <Reveal y={20} duration={0.7} className="grid grid-cols-12 gap-6 pb-12">
               <div className="col-span-12 lg:col-span-2">
@@ -293,8 +293,8 @@ export default function Example2() {
           </div>
         </section>
 
-        {/* 7. PROCESS — sticky */}
-        <section className="sticky top-0 z-[7] border-t border-neutral-200 bg-white shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]">
+        {/* 7. PROCESS — scrolls naturally (6 step rows) */}
+        <section className="border-t border-neutral-200 bg-white">
           <div className="mx-auto max-w-[1400px] px-10 py-20">
             <Reveal y={20} duration={0.7} className="grid grid-cols-12 gap-6 pb-12">
               <div className="col-span-12 lg:col-span-2">
@@ -348,8 +348,8 @@ export default function Example2() {
           </div>
         </section>
 
-        {/* 8. PRICING — sticky */}
-        <section className="sticky top-0 z-[8] border-t border-neutral-200 bg-white shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]">
+        {/* 8. PRICING — scrolls naturally (3 columns of price lists) */}
+        <section className="border-t border-neutral-200 bg-white">
           <div className="mx-auto max-w-[1400px] px-10 py-20">
             <Reveal y={20} duration={0.7} className="grid grid-cols-12 gap-6 pb-12">
               <div className="col-span-12 lg:col-span-2">
@@ -391,10 +391,10 @@ export default function Example2() {
           </div>
         </section>
 
-        {/* 9. FAQ — sticky */}
+        {/* 9. FAQ — scrolls naturally (6 Q/A rows) */}
         <section
           id="faq"
-          className="sticky top-0 z-[9] border-t border-neutral-200 bg-white shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]"
+          className="border-t border-neutral-200 bg-white"
         >
           <div className="mx-auto max-w-[1400px] px-10 py-20">
             <Reveal y={20} duration={0.7} className="grid grid-cols-12 gap-6 pb-12">

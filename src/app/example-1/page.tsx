@@ -76,9 +76,9 @@ export default function Example1() {
         </div>
       </header>
 
-      {/* Hero — sticky-stack layer 1 */}
+      {/* Hero — scrolls naturally (portrait image card exceeds shorter viewports) */}
       <section
-        className="sticky top-0 z-[1] px-8 pt-20 pb-24"
+        className="px-8 pt-20 pb-24"
         style={{ background: PALETTE.paper }}
       >
         <div className="mx-auto max-w-7xl">
@@ -236,9 +236,9 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* Timeline — sticky-stack layer 3 */}
+      {/* Timeline — scrolls naturally (5 milestones stack vertically on mobile = tall) */}
       <section
-        className="sticky top-0 z-[3] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
+        className="border-t py-24"
         style={{
           borderTopColor: "rgba(26,22,18,0.12)",
           background: PALETTE.paper,
