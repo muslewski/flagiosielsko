@@ -58,9 +58,9 @@ export default function Example5() {
         </div>
       </header>
 
-      {/* === HERO BENTO === sticky-stack layer 1 */}
+      {/* === HERO BENTO === sticky-stack layer 1 (mobile: relative only — cards stack tall) */}
       <section
-        className="sticky top-0 z-[1] px-6 pt-16 pb-24 sm:pt-24"
+        className="relative z-[1] px-6 pt-16 pb-24 sm:pt-24 lg:sticky lg:top-0"
         style={{ background: BG }}
       >
         <div className="mx-auto max-w-7xl">
@@ -412,9 +412,9 @@ export default function Example5() {
         </Stagger>
       </Section>
 
-      {/* === SECTION: CTA === sticky-stack layer 8 */}
+      {/* === SECTION: CTA === sticky-stack layer 8 (mobile: relative only) */}
       <section
-        className="sticky top-0 z-[8] border-t border-neutral-900 px-6 py-24 shadow-[0_-16px_50px_-12px_rgba(0,0,0,0.35)]"
+        className="relative z-[8] border-t border-neutral-900 px-6 py-24 shadow-[0_-16px_50px_-12px_rgba(0,0,0,0.35)] lg:sticky lg:top-0"
         style={{ background: INK }}
       >
         <Reveal y={28} duration={0.8} className="mx-auto max-w-4xl text-center text-white">
@@ -521,7 +521,7 @@ function Section({
       id={id}
       className={
         positioned
-          ? `${pinned ? "sticky top-0" : "relative"} border-t border-neutral-200 px-6 py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]`
+          ? `relative ${pinned ? "lg:sticky lg:top-0" : ""} border-t border-neutral-200 px-6 py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]`
           : "px-6 py-24"
       }
       style={{
