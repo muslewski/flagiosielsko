@@ -18,6 +18,7 @@ import {
   TextReveal,
   Pulse,
   MotionAccordion,
+  CountUp,
 } from "@/components/motion";
 
 export const metadata: Metadata = { title: "example-4 · Mroczne kino · premium" };
@@ -175,21 +176,34 @@ export default function Example4() {
       {/* Stats glassmorphism */}
       <section className="relative z-10 mx-auto max-w-7xl px-8 pb-32">
         <Stagger stagger={0.1} className="grid gap-4 md:grid-cols-4">
-          {valueProps.map((v) => (
-            <StaggerItem
-              key={v.label}
-              variant="spring"
-              className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl"
-            >
-              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-neutral-500">
-                {v.label}
-              </div>
-              <div className="mt-4 text-4xl font-semibold tracking-tight">
-                {v.value}
-              </div>
-              <div className="mt-1 text-sm text-neutral-400">{v.detail}</div>
-            </StaggerItem>
-          ))}
+          {valueProps.map((v, i) => {
+            const match = v.value.match(/^([\d,]+)(.*)$/);
+            const isCountable = match !== null;
+            const num = isCountable ? parseInt(match[1], 10) : 0;
+            const suffix = isCountable ? match[2] : "";
+            return (
+              <StaggerItem
+                key={v.label}
+                variant="spring"
+                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl"
+              >
+                <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-neutral-500">
+                  {v.label}
+                </div>
+                <div className="mt-4 text-4xl font-semibold tracking-tight tabular-nums">
+                  {isCountable ? (
+                    <>
+                      <CountUp to={num} duration={1.6 + i * 0.15} />
+                      {suffix}
+                    </>
+                  ) : (
+                    v.value
+                  )}
+                </div>
+                <div className="mt-1 text-sm text-neutral-400">{v.detail}</div>
+              </StaggerItem>
+            );
+          })}
         </Stagger>
       </section>
 
