@@ -27,7 +27,6 @@ export default function Example4() {
   return (
     <MotionRoot>
     <main className="relative min-h-screen overflow-hidden bg-[#08080a] font-sans text-neutral-100">
-      <BackLink />
       <AmbientGlow />
 
       {/* Header */}
@@ -479,13 +478,3 @@ function AmbientGlow() {
   );
 }
 
-function BackLink() {
-  return (
-    <Link
-      href="/"
-      className="fixed left-4 top-4 z-50 rounded-full border border-white/15 bg-white/10 px-4 py-2 font-mono text-xs uppercase tracking-widest text-white backdrop-blur hover:bg-white/20"
-    >
-      ← galeria
-    </Link>
-  );
-}

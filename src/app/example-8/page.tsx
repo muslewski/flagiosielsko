@@ -28,7 +28,6 @@ export default function Example8() {
   return (
     <MotionRoot>
     <main className="min-h-screen bg-white font-sans text-neutral-900">
-      <BackLink />
 
       {/* Header */}
       <header className="sticky top-0 z-30 border-b border-neutral-200 bg-white/85 backdrop-blur">
@@ -557,13 +556,3 @@ function FlowingFlag() {
   );
 }
 
-function BackLink() {
-  return (
-    <Link
-      href="/"
-      className="fixed left-4 top-4 z-50 rounded-full bg-white/95 px-4 py-2 font-mono text-xs uppercase tracking-widest text-neutral-800 shadow-md hover:bg-white"
-    >
-      ← galeria
-    </Link>
-  );
-}

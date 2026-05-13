@@ -91,7 +91,6 @@ export default function Example6() {
       style={{ background: PAPER, color: INK }}
       className="relative font-sans"
     >
-      <BackLink />
       <PaperGrain />
 
       {/* Header — wafer thin, all caps */}
@@ -1141,13 +1140,3 @@ function PaperGrain() {
   );
 }
 
-function BackLink() {
-  return (
-    <Link
-      href="/"
-      className="fixed left-4 top-4 z-50 bg-white px-4 py-2 font-mono text-[10px] uppercase tracking-[0.3em] shadow-md ring-1 ring-black/10 hover:bg-neutral-100"
-    >
-      ← galeria
-    </Link>
-  );
-}

@@ -38,7 +38,6 @@ export default function Example10() {
       style={{ background: STEEL, color: FG }}
       className="min-h-screen font-grotesk"
     >
-      <BackLink />
       <BlueprintGrid />
 
       {/* Industrial top bar */}
@@ -870,13 +869,3 @@ function BlueprintGrid() {
   );
 }
 
-function BackLink() {
-  return (
-    <Link
-      href="/"
-      className="fixed left-4 top-12 z-50 border border-zinc-700 bg-zinc-900/90 px-4 py-2 font-mono text-xs uppercase tracking-[0.2em] text-zinc-100 backdrop-blur hover:bg-zinc-800"
-    >
-      ← galeria
-    </Link>
-  );
-}

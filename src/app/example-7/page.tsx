@@ -32,7 +32,6 @@ export default function Example7() {
       style={{ background: CREAM, color: BLACK }}
       className="min-h-screen font-grotesk"
     >
-      <BackLink />
 
       {/* Header */}
       <header
@@ -468,13 +467,3 @@ export default function Example7() {
   );
 }
 
-function BackLink() {
-  return (
-    <Link
-      href="/"
-      className="fixed left-4 top-4 z-50 border-2 border-black bg-white px-4 py-2 font-mono text-xs font-black uppercase tracking-widest shadow-[4px_4px_0_0_#0a0a0a] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-transform"
-    >
-      ← galeria
-    </Link>
-  );
-}

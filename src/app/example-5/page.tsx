@@ -31,7 +31,6 @@ export default function Example5() {
   return (
     <MotionRoot>
     <main style={{ background: BG, color: INK }} className="min-h-screen font-sans">
-      <BackLink />
 
       {/* Top nav */}
       <header className="sticky top-0 z-30 backdrop-blur" style={{ background: "rgba(244,244,245,0.75)" }}>
@@ -521,13 +520,3 @@ function Section({
   );
 }
 
-function BackLink() {
-  return (
-    <Link
-      href="/"
-      className="fixed left-4 top-4 z-50 rounded-full bg-white px-4 py-2 font-mono text-xs uppercase tracking-widest text-neutral-800 shadow-md hover:bg-neutral-100"
-    >
-      ← galeria
-    </Link>
-  );
-}

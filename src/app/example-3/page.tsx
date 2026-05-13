@@ -26,7 +26,6 @@ export default function Example3() {
   return (
     <MotionRoot>
     <main className="min-h-screen bg-white font-grotesk text-black">
-      <BackLink />
 
       {/* Header */}
       <header className="sticky top-0 z-30 border-b-2 border-black bg-white">
@@ -414,13 +413,3 @@ export default function Example3() {
   );
 }
 
-function BackLink() {
-  return (
-    <Link
-      href="/"
-      className="fixed left-4 top-4 z-50 border-2 border-black bg-white px-4 py-2 font-mono text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white"
-    >
-      ← galeria
-    </Link>
-  );
-}

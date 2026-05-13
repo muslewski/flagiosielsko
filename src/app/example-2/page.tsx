@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import {
   company,
@@ -28,7 +27,6 @@ export default function Example2() {
   return (
     <MotionRoot>
     <main className="relative bg-white font-sans text-neutral-900">
-      <BackLink />
 
       {/* Header — sticky, above everything */}
       <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur">
@@ -704,13 +702,3 @@ export default function Example2() {
   );
 }
 
-function BackLink() {
-  return (
-    <Link
-      href="/"
-      className="fixed left-4 top-4 z-[60] rounded-full bg-white/95 px-4 py-2 font-mono text-xs uppercase tracking-widest text-neutral-800 shadow-md ring-1 ring-black/10 backdrop-blur hover:bg-white"
-    >
-      ← galeria
-    </Link>
-  );
-}

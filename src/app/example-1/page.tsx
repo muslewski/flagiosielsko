@@ -37,7 +37,6 @@ export default function Example1() {
       style={{ background: PALETTE.paper, color: PALETTE.ink }}
       className="font-display"
     >
-      <BackLink />
 
       {/* Top bar */}
       <header
@@ -555,13 +554,3 @@ export default function Example1() {
   );
 }
 
-function BackLink() {
-  return (
-    <Link
-      href="/"
-      className="fixed left-4 top-4 z-50 rounded-full bg-white/90 px-4 py-2 font-mono text-xs uppercase tracking-widest text-neutral-800 shadow-md ring-1 ring-black/10 backdrop-blur hover:bg-white"
-    >
-      ← galeria
-    </Link>
-  );
-}
