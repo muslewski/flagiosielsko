@@ -130,10 +130,10 @@ export default function Example4() {
             <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 backdrop-blur">
               <div className="relative aspect-[4/5]">
                 <Image
-                  src="https://flagiosielsko.pl/wp-content/uploads/2026/04/YAMAHA-150x150.png"
-                  alt="Realizacja Yamaha"
+                  src="https://images.unsplash.com/photo-1618530242302-4c5a9094db4b?auto=format&fit=crop&w=1600&q=85"
+                  alt="Flaga firmowa na maszcie — realizacja Yamaha"
                   fill
-                  className="object-cover opacity-90"
+                  className="object-cover opacity-95"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   priority
                 />
@@ -299,8 +299,8 @@ export default function Example4() {
             />
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-neutral-900">
               <Image
-                src="https://flagiosielsko.pl/wp-content/uploads/2026/04/YAMAHA-150x150.png"
-                alt="Realizacja Yamaha"
+                src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=1600&q=85"
+                alt="Studium przypadku — Yamaha · sitodruk masztowy"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"
