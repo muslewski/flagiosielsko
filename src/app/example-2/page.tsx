@@ -104,12 +104,12 @@ export default function Example2() {
               </p>
               <a
                 href="#oferta"
-                className="mt-8 inline-flex items-center gap-2 border-b border-neutral-900 pb-1 text-sm font-medium hover:gap-3"
+                className="mt-8 inline-flex w-fit items-center gap-2 border-b border-neutral-900 pb-1 text-sm font-medium hover:gap-3"
               >
                 Zobacz ofertę
                 <span aria-hidden>→</span>
               </a>
-              <div className="mt-12 inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-neutral-500">
+              <div className="mt-16 flex w-fit items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-neutral-500">
                 <span>Scroll</span>
                 <span
                   aria-hidden
