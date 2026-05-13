@@ -178,10 +178,10 @@ export default function Example2() {
           </div>
         </section>
 
-        {/* 4. PRODUCTS — scrolls naturally (8 product rows exceed viewport) */}
+        {/* 4. PRODUCTS — natural-flow but positioned (z=4) so it covers pinned About (z=3) */}
         <section
           id="oferta"
-          className="border-t border-neutral-200 bg-white"
+          className="relative z-[4] border-t border-neutral-200 bg-white shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]"
         >
           <div className="mx-auto max-w-[1400px] px-10 py-20">
             <Reveal y={20} duration={0.7} className="grid grid-cols-12 gap-6 pb-12">
@@ -234,8 +234,8 @@ export default function Example2() {
           </div>
         </section>
 
-        {/* 5. GALLERY — scrolls naturally (16 figures) */}
-        <section className="border-t border-neutral-200 bg-neutral-50">
+        {/* 5. GALLERY — natural-flow but positioned (z=5) so it covers Products (z=4) */}
+        <section className="relative z-[5] border-t border-neutral-200 bg-neutral-50 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.1)]">
           <div className="mx-auto max-w-[1400px] px-10 py-20">
             <Reveal y={20} duration={0.7} className="grid grid-cols-12 gap-6 pb-12">
               <div className="col-span-12 lg:col-span-2">
@@ -293,8 +293,8 @@ export default function Example2() {
           </div>
         </section>
 
-        {/* 7. PROCESS — scrolls naturally (6 step rows) */}
-        <section className="border-t border-neutral-200 bg-white">
+        {/* 7. PROCESS — natural-flow but positioned (z=7) so it covers pinned Clients (z=6) */}
+        <section className="relative z-[7] border-t border-neutral-200 bg-white shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]">
           <div className="mx-auto max-w-[1400px] px-10 py-20">
             <Reveal y={20} duration={0.7} className="grid grid-cols-12 gap-6 pb-12">
               <div className="col-span-12 lg:col-span-2">
@@ -348,8 +348,8 @@ export default function Example2() {
           </div>
         </section>
 
-        {/* 8. PRICING — scrolls naturally (3 columns of price lists) */}
-        <section className="border-t border-neutral-200 bg-white">
+        {/* 8. PRICING — natural-flow but positioned (z=8) */}
+        <section className="relative z-[8] border-t border-neutral-200 bg-white shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]">
           <div className="mx-auto max-w-[1400px] px-10 py-20">
             <Reveal y={20} duration={0.7} className="grid grid-cols-12 gap-6 pb-12">
               <div className="col-span-12 lg:col-span-2">
@@ -391,10 +391,10 @@ export default function Example2() {
           </div>
         </section>
 
-        {/* 9. FAQ — scrolls naturally (6 Q/A rows) */}
+        {/* 9. FAQ — natural-flow but positioned (z=9) so it covers Pricing (z=8) */}
         <section
           id="faq"
-          className="border-t border-neutral-200 bg-white"
+          className="relative z-[9] border-t border-neutral-200 bg-white shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.08)]"
         >
           <div className="mx-auto max-w-[1400px] px-10 py-20">
             <Reveal y={20} duration={0.7} className="grid grid-cols-12 gap-6 pb-12">

@@ -76,9 +76,9 @@ export default function Example1() {
         </div>
       </header>
 
-      {/* Hero — scrolls naturally (portrait image card exceeds shorter viewports) */}
+      {/* Hero — natural-flow but positioned (z=1) so it sits in the stacking ladder */}
       <section
-        className="px-8 pt-20 pb-24"
+        className="relative z-[1] px-8 pt-20 pb-24"
         style={{ background: PALETTE.paper }}
       >
         <div className="mx-auto max-w-7xl">
@@ -236,9 +236,9 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* Timeline — scrolls naturally (5 milestones stack vertically on mobile = tall) */}
+      {/* Timeline — natural-flow but positioned (z=3) so it covers pinned About (z=2) */}
       <section
-        className="border-t py-24"
+        className="relative z-[3] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
         style={{
           borderTopColor: "rgba(26,22,18,0.12)",
           background: PALETTE.paper,
@@ -392,10 +392,10 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* Products — scrolls naturally (8 cards exceed viewport) */}
+      {/* Products — natural-flow but positioned (z=5) so it covers pinned Pull-quote (z=4) */}
       <section
         id="oferta"
-        className="border-t px-8 py-24"
+        className="relative z-[5] border-t px-8 py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
         style={{
           background: PALETTE.paper,
           borderTopColor: "rgba(26,22,18,0.12)",
@@ -471,9 +471,9 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* Gallery + clients — scrolls naturally (12 thumbs + clients list) */}
+      {/* Gallery + clients — natural-flow but positioned (z=6) to cover Products underneath */}
       <section
-        className="border-t py-24"
+        className="relative z-[6] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.25)]"
         style={{
           background: PALETTE.ink,
           color: PALETTE.cream,
@@ -526,9 +526,9 @@ export default function Example1() {
         </div>
       </section>
 
-      {/* FAQ — scrolls naturally (6 Q/A rows exceed viewport) */}
+      {/* FAQ — natural-flow but positioned (z=7) to cover prior sections */}
       <section
-        className="border-t py-24"
+        className="relative z-[7] border-t py-24 shadow-[0_-12px_40px_-16px_rgba(0,0,0,0.06)]"
         style={{
           borderTopColor: "rgba(26,22,18,0.12)",
           background: PALETTE.cream,
