@@ -165,8 +165,8 @@ export default function Example5() {
         </div>
       </section>
 
-      {/* === SECTION: About === */}
-      <Section z={2} eyebrow="01 · O firmie" title="Czterdzieści dwa lata. Jedna rodzina." background="white">
+      {/* === SECTION: About === positioned (z=2) but not pinned (4/5 portrait image card pushes section past viewport) */}
+      <Section z={2} sticky={false} eyebrow="01 · O firmie" title="Czterdzieści dwa lata. Jedna rodzina." background="white">
         <div className="grid gap-12 lg:grid-cols-12">
           <Reveal y={28} duration={0.9} className="lg:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-neutral-100">
